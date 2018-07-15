@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<title>blog-登陆</title>
+<link href="../public/Wopop_files/style_log.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="../public/Wopop_files/style.css">
+<link rel="stylesheet" type="text/css" href="../public/Wopop_files/userpanel.css">
+<link rel="stylesheet" type="text/css" href="../public/Wopop_files/jquery.ui.all.css">
+</head>
+<body class="login" mycollectionplug="bind">
+<div class="login_m">
+<div class="login_boder">
+    <form action="./dle_login.php" method="post" onsubmit="return datayz() ">
+<div class="login_padding" id="login_model">
+  <h2>账号</h2>
+  <label>
+    <input type="text" id="username" class="txt_input txt_input2" name="user">
+  </label>
+  <h2>密码</h2>
+  <label>
+    <input type="password" name="pwd" id="userpwd" class="txt_input" >
+  </label>
+
+  <div class="rem_sub">
+  <div class="rem_sub_l">
+   </div>
+    <label>
+      <input type="submit" class="sub_button" name="button" id="button" value="登陆">
+    </label>
+  </div>
+</div>
+    </form>
+</div>
+</div>
+<script >
+    function datayz() {
+            if(document.getElementById('username').value ===''){
+                alert("请输入账号");
+                return false;
+            }else if(document.getElementById('userpwd').value ===''){
+                alert("请输入密码");
+                return false;
+            }else {
+                return true;
+            }
+    }
+</script>
+</body>
+</html>

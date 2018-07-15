@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>控制台</title>
+    <link rel="stylesheet" type="text/css" href="../public/Css/identify.css" />
+    <link rel="stylesheet" type="text/css" href="../public/Css/layout.css" />
+    <link rel="stylesheet" type="text/css" href="../public/account.css" />
+    <link rel="stylesheet" type="text/css" href="../public/Css/style.css" />
+    <link rel="stylesheet" type="text/css" href="../public/Css/control_index.css" />
+    <script type="text/javascript" src="../public/Js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../public/layer/layer.js"></script>
+    <script type="text/javascript" src="../public/Js/haidao.offcial.general.js"></script>
+    <script type="text/javascript" src="../public/Js/select.js"></script>
+    <script type="text/javascript" src="../public/Js/haidao.validate.js"></script>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="../public/Css/bootstrap.min.css">
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="../public/Css/bootstrap.min.js"></script>
+</head>
+
+<body>
+<?php include "../view/left1.html";?>
+
+<div class="view-product">
+    <div class="manage account-manage">
+        <div class="manage-head">
+            <h6 class="layout padding-left manage-head-con">评论管理</h6>
+        </div>
+        <table class="table table-hover"  style="width: 80% ;margin: 0 auto">
+            <thead>
+            <tr>
+                <th>文章名称</th>
+                <th>所属分类</th>
+                <th>发布时间</th>
+                <th>发布人</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><?php echo $art_row['art_title'];?></td>
+                <td><?php echo $art_row['col_content'];?></td>
+                <td><?php echo date('Y-m-d H:i:s',$art_row['aer_time'])?></td>
+                <td><?php echo $art_row['user_name'];?></td>
+            </tr>
+            </tbody>
+        </table>
+        <table class="table" style="width: 80% ;margin: 0 auto">
+            <caption>评论</caption>
+            <thead>
+            <tr>
+                <td>姓名</td>
+                <td>内容</td>
+                <td>时间</td>
+                <td>操作</td>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach($dis_row as $vaue):?>
+            <tr>
+                <td><?php echo $vaue['dis_name'];?></td>
+                <td><?php echo $vaue['dis_content'];?></td>
+                <td><?php echo date('Y-m-d H:i:s',$vaue['dis_tiem'])?></td>
+                <td><a href="./dle_delete_dis.php?dis_id=<?php echo $vaue['dis_id'];?>&art_id=<?php echo$art_id ;?>" >删除</a></td>
+            </tr>
+            <?php endforeach?>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>
+    $(".sidebar-title").live('click', function() {
+        if ($(this).parent(".sidebar-nav").hasClass("sidebar-nav-fold")) {
+            $(this).next().slideDown(200);
+            $(this).parent(".sidebar-nav").removeClass("sidebar-nav-fold");
+        } else {
+            $(this).next().slideUp(200);
+            $(this).parent(".sidebar-nav").addClass("sidebar-nav-fold");
+        }
+    });
+</script>
+</body>
+
+</html>

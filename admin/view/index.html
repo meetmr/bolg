@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="./public/Css/identify.css" />
+		<link rel="stylesheet" type="text/css" href="./public//Css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="./public/Css/account.css" />
+		<link rel="stylesheet" type="text/css" href="./public/Css/style.css" />
+		<link rel="stylesheet" type="text/css" href="./public/Css/control_index.css" />
+		<script type="text/javascript" src="./public/Js/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="./publicn/Js/layer/layer.js"></script>
+		<script type="text/javascript" src="./public/Js/haidao.offcial.general.js"></script>
+		<script type="text/javascript" src=".public/Js/select.js"></script>
+		<script type="text/javascript" src=".public/Js/haidao.validate.js"></script>
+	</head>
+	<body>
+			<?php include"./view/left.html";?>
+		<div class="view-product background-color">
+			<div class="padding-big background-color">
+				<div class="account-info clearfix">
+					<div class="text-box-main min-width-300 fl">
+						<dl>
+							<dt class="padding-big-left lists-border-list clearfix">
+								<div class="title fl padding-big-top padding-big-bottom">
+									<p>HI,<?php echo$user_row['user_name']?> </p>
+									<p class="margin-small-top clearfix">
+										<span class="fl">账户级别：<em class="text-blue-deep">管理员</em></span>
+									</p>
+								</div>
+								<span class="fr icon-head">
+									<img src="<?php echo $user_row['user_pic']?>" alt="账户头像">
+								</span>
+							</dt>
+							<dd class="padding-big clearfix">
+								<p class="w50 fl">
+									<i class="fl icon icon-mobile"></i>
+
+									<span class="fl margin-left">手机：<?php echo$user_row['user_phone']?> </span>
+								</p>
+								<p class="w50 fl">
+									<i class="fl icon icon-email"></i>
+
+									<span class="fl margin-left">邮箱：<?php echo$user_row['user_mail']?></span>
+								</p>
+							</dd>
+						</dl>
+					</div>
+					<div class="text-box-main min-width-360 fl">
+						<dl>
+							<dt class="padding-big lists-border-list clearfix">
+								<div class="fl w50 title">
+									<p>网站域名</p>
+									<p class="margin-small-top clearfix">
+										<span class="fl"><?php echo $setup_row['address']?> </span>
+									</p>
+								</div>
+								<div class="fl w50 padding-left title">
+									<p>网站运行时间</p>
+									<p class="margin-small-top clearfix">
+										<span class="fl"><em class="h3 text-blue-deep"> <?php echo ceil($time /(60*60*24));?> 天</em></span>
+									</p>
+								</div>
+							</dt>
+							<dd class="padding-big">
+								<div class="account-class text-hidden">
+									IP：<a href="#"><?php echo $ip?></a>
+									时间：<a href="#" id="time"></a>
+									访问量：<a href="#"><?php echo $setup_row['amount'];?></a>
+								</div>
+							</dd>
+						</dl>
+					</div>
+					<div class="text-box-main min-width-300 fl margin-right-none">
+						<dl>
+							<dt class="padding-big lists-border-list clearfix">
+								<div class="fl w50 title">
+									<p>网站域名</p>
+									<p class="margin-small-top clearfix">
+										<span class="fl"><?php echo $setup_row['address']?> </span>
+									</p>
+								</div>
+								<div class="fl w50 padding-left title">
+									<p>网站运行时间</p>
+									<p class="margin-small-top clearfix">
+										<span class="fl"><em class="h3 text-blue-deep"> <?php echo ceil($time /(60*60*24));?> 天</em></span>
+									</p>
+								</div>
+							</dt>
+							<dd class="padding-big">
+								<div class="account-class text-hidden">
+									文章：<a href="#"><?php echo $art_num?></a>
+									评论：<a href="#"><?php echo $dis_num?></a>
+									访问量：<a href="#"><?php echo $setup_row['amount'];?></a>
+								</div>
+							</dd>
+						</dl>
+					</div>
+				</div>
+
+				<div class="account-product margin-big-top clearfix">
+					<div class="text-box-main padding-big fl mine-product">
+						<h2 class="h6 margin-big-bottom">文章分类</h2>
+						<div class="mine-product-content clearfix">
+							<ul class="w50 fl lists">
+								<?php foreach($class_row as $vaue):?>
+								<?php
+									$col_id = $vaue['col_id'];
+									$sql = "select count(*) as art_num from article where col_id = $col_id";
+									$num = $dao->fetchRow($sql);
+									$num = $num['art_num'];
+								?>
+								<li class="w70 lists-border-list">
+									<p class="border-list-text"><?php echo $vaue['col_content'];?> <em class="orange"><?php echo$num?> </em> 条
+										<a class="text-main fr" href="../../home/model/class.php?art_clo=<?php echo$vaue['col_id'];?>">查看</a>
+									</p>
+								</li>
+								<?php endforeach ?>
+							</ul>
+							<ul class="w50 fl lists">
+								<?php foreach($class_row as $vaue):?>
+								<?php
+									$col_id = $vaue['col_id'];
+									$sql = "select count(*) as art_num from article where col_id = $col_id";
+									echo $sql;
+									$num = $dao->fetchRow($sql);
+								$num = $num['art_num'];
+								?>
+								<li class="w70 lists-border-list">
+									<p class="border-list-text"><?php echo $vaue['col_content'];?> <em class="orange"><?php echo$num?> </em> 条
+										<a class="text-main fr" href="../../home/model/class.php?art_clo=<?php echo$vaue['col_id'];?>">查看</a>
+									</p>
+								</li>
+								<?php endforeach ?>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		$(".sidebar-title").live('click', function() {
+			if ($(this).parent(".sidebar-nav").hasClass("sidebar-nav-fold")) {
+				$(this).next().slideDown(200);
+				$(this).parent(".sidebar-nav").removeClass("sidebar-nav-fold");
+			} else {
+				$(this).next().slideUp(200);
+				$(this).parent(".sidebar-nav").addClass("sidebar-nav-fold");
+			}
+		});
+		function showTime(){
+			nowtime=new Date();
+			year=nowtime.getFullYear();
+			month=nowtime.getMonth()+1;
+			date=nowtime.getDate();
+			document.getElementById("time").innerHTML=year+"年"+month+"月"+date+" "+nowtime.toLocaleTimeString();
+		}
+		setInterval("showTime()",1000);
+	</script>
+</body>
+
+</html>

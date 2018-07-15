@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>控制台</title>
+    <link rel="stylesheet" type="text/css" href="../public/Css/identify.css ">
+    <link rel="stylesheet" type="text/css" href="../public/Css/layout.css" />
+    <link rel="stylesheet" type="text/css" href="../public/Css/wenset.css" />
+    <link rel="stylesheet" type="text/css" href="../public/Css/style.css" />
+    <link rel="stylesheet" type="text/css" href="../public/Css/control_index.css" />
+    <script type="text/javascript" src="../public/Js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../public/Js/haidao.offcial.general.js"></script>
+    <script type="text/javascript" src="../public/Js/select.js"></script>
+    <script type="text/javascript" src="../public/Js/haidao.validate.js"></script>
+    <link rel="stylesheet" href="../public/Css/bootstrap.min.css">
+    <script src="../public/Css/bootstrap.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
+    <style>
+        .note-editable{
+            height: 500px;
+        }
+        .panel-body{
+            height: 500px;
+        }
+    </style>
+</head>
+<body>
+<?php include "../view/left1.html";?>
+<div class="view-product">
+    <div class="company_identify" >
+        <div class="manage-head">
+            <h6 class="padding-left manage-head-con">添加文章</h6>
+        </div>
+        <form role="form"  action="./updata_article.php" style="width: 800px;margin: 0 auto" method="post" onsubmit="return Verification()">
+            <div class="form-group">
+                <label for="name">编辑文章</label>
+                <input type="text" class="form-control" id="title" name="title" value="<?php echo $article_rew ['art_title'];?>">
+            </div>
+            <input type="hidden" value="<?php echo $art_id;?>" name="art_id">
+            <div class="form-group">
+                <label for="name">请选择分类</label>
+                <select class="form-control" name="class">
+                    <?php  foreach ($class_rew as $value):?>
+                    <?php if($article_rew['col_id'] == $value['col_id']):?>
+                    <option  selected  value="<?php echo $value['col_id'];?>"><?php echo $value['col_content'];?></option>
+                    <?php else: ?>
+                     <option  value="<?php echo $value['col_id'];?>"><?php echo $value['col_content'];?></option>
+                    <?php endif ?>
+                    <?php endforeach ?>
+                </select>
+            </div>
+            <textarea id="summernote" name="summernote"><?php echo $article_rew ['art_content'];?></textarea>
+            <script>
+                $(document).ready(function() {
+                    $('#summernote').summernote();
+                });
+            </script>
+            <button type="submit" class="btn btn-default">提交</button>
+        </form>
+    </div>
+</div>
+</div>
+<script>
+    $(".sidebar-title").live('click', function() {
+        if ($(this).parent(".sidebar-nav").hasClass("sidebar-nav-fold")) {
+            $(this).next().slideDown(200);
+            $(this).parent(".sidebar-nav").removeClass("sidebar-nav-fold");
+        } else {
+            $(this).next().slideUp(200);
+            $(this).parent(".sidebar-nav").addClass("sidebar-nav-fold");
+        }
+    });
+    function Verification() {
+        if($(" #title ").val() ===''){
+            alert("请输入标题");
+            return false;
+        }
+    }
+</script>
+</body>
+
+</html>

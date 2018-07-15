@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>控制台</title>
+		<link rel="stylesheet" type="text/css" href="../public/Css/identify.css ">
+		<link rel="stylesheet" type="text/css" href="../public/Css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../public/Css/account.css" />
+		<link rel="stylesheet" type="text/css" href="../public/Css/wenset.css" />
+		<link rel="stylesheet" type="text/css" href="../public/Css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../public/Css/control_index.css" />
+		<script type="text/javascript" src="../public/Js/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="../public/Js/layer/layer.js"></script>
+		<script type="text/javascript" src="../public/Js/haidao.offcial.general.js"></script>
+		<script type="text/javascript" src="../public/Js/select.js"></script>
+		<script type="text/javascript" src="../public/Js/haidao.validate.js"></script>
+		<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+		<link rel="stylesheet" href="../public/Css/bootstrap.min.css">
+		<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+		<script src="../public/Css/bootstrap.min.js"></script>
+	</head>
+	<body>
+	<?php include "../view/left1.html";?>
+			<div class="view-product">
+				<div class="manage-head">
+					<h6 class="layout padding-left manage-head-con">网站设置</h6>
+				</div>
+				<div class="authority"style="margin-bottom: 100px;" >
+					<div class="box" style="padding-bottom: 20px;">
+						<form role="form"style="margin-bottom: 100px;"  enctype="multipart/form-data" onsubmit="return Verification()" action="dle_webSet.php" method="post">
+						<div class="form-group">
+							<label for="name">网站名称</label>
+							<input type="text" class="form-control" id="website_name" name="website_name"
+								   placeholder="<?php echo $set_row['website_name'];?>">
+						</div>
+						<div class="form-group">
+							<label for="name">IPC备案号</label>
+							<input type="text" class="form-control" id="icp_code" name="icp_code"
+								   placeholder="<?php echo $set_row['icp_code'];?>">
+						</div>
+						<div class="form-group">
+							<label for="name">电子邮件地址</label>
+							<input type="text" class="form-control" id="mailbox" name="mailbox"
+								   placeholder="<?php echo $set_row['mailbox'];?>">
+						</div>
+						<div class="form-group">
+							<label for="name">站点地址</label>
+							<input type="text" class="form-control" id="address" name="address"
+							placeholder="<?php echo $set_row['address'];?>">
+						</div>
+						<div class="form-group">
+							<label for="inputfile">网站LOGO</label>
+							<input type="file" id="image" name="image">
+							<p class="help-block">*请上传100*100的图片</p>
+						</div>
+
+						<button type="submit" class="btn btn-default">提交</button>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			$(".sidebar-title").live('click', function() {
+				if ($(this).parent(".sidebar-nav").hasClass("sidebar-nav-fold")) {
+					$(this).next().slideDown(200);
+					$(this).parent(".sidebar-nav").removeClass("sidebar-nav-fold");
+				} else {
+					$(this).next().slideUp(200);
+					$(this).parent(".sidebar-nav").addClass("sidebar-nav-fold");
+				}
+			});
+			function Verification() {
+                if($(" #website_name ").val() ===''){
+                    alert("请输入网站名称");
+                    return false;
+                }else if($(" #icp_code ").val() ===''){
+                    alert("请输入备案号");
+                    return false;
+				}else if($(" #mailbox ").val() ===''){
+                    alert("请输入邮件");
+                    return false;
+                }else if($(" #address ").val() ===''){
+                    alert("请输入站点地址");
+                    return false;
+                }else {
+                    return true;
+				}
+            }
+		</script>
+	</body>
+
+</html>

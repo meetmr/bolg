@@ -1,0 +1,93 @@
+
+<div class="view-topbar">
+    <div class="topbar-console">
+        <div class="tobar-head fl">
+            <a href="#" class="topbar-logo fl">
+            </a>
+            <a href="../index.php" class="topbar-home-link topbar-btn text-center fl"><span>后台管理</span></a>
+        </div>
+    </div>
+    <div class="topbar-info">
+        <ul class="fr">
+            <li class="fl topbar-info-item">
+                <div class="dropdown">
+                    <a href="#" class="topbar-btn">
+                        <span class="fl text-normal"><?php echo $_SESSION['name'] ?> </span>
+                        <span class="icon-arrow-down"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../model/outlogin.php">退出</a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="view-body">
+    <div class="view-sidebar">
+        <div class="sidebar-content">
+            <div class="sidebar-nav">
+                <div class="sidebar-title">
+                    <a href="#">
+                        <span class="icon"><b class="fl icon-arrow-down"></b></span>
+                        <span class="text-normal">网站设置</span>
+                    </a>
+                </div>
+                <ul class="sidebar-trans">
+                    <li>
+                        <a href="./webSet.php">
+                            <b class="sidebar-icon"><img src="../public/Images/xt.png" width="16" height="16" /></b>
+                            <span class="text-normal">系统设置</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="sidebar-nav">
+                <div class="sidebar-title">
+                    <a href="#">
+                        <span class="icon"><b class="fl icon-arrow-down"></b></span>
+                        <span class="text-normal">网站管理</span>
+                    </a>
+                </div>
+                <ul class="sidebar-trans">
+                    <li>
+                        <a href="./article.php">
+                            <b class="sidebar-icon"><img src="../public/Images/wz.png" width="16" height="16" /></b>
+                            <span class="text-normal">文章管理</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./comment.php">
+                            <b class="sidebar-icon"><img src="../public/Images/xx.png" width="16" height="16" /></b>
+                            <span class="text-normal">评论管理</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./message.php">
+                            <b class="sidebar-icon"><img src="../public/Images/icon_news.png" width="16" height="16" /></b>
+                            <span class="text-normal">留言管理</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./user.php">
+                            <b class="sidebar-icon"><img src="../public/Images/yh.png" width="16" height="16" /></b>
+                            <span class="text-normal">用户管理</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./qiyeAuth.php">
+                            <b class="sidebar-icon"><img src="../public/Images/tjwz.png" width="16" height="16" /></b>
+                            <span class="text-normal">添加文章</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./class.php">
+                            <b class="sidebar-icon"><img src="../public/Images/fl.png" width="16" height="16" /></b>
+                            <span class="text-normal">分类管理</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
